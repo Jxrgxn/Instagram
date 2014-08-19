@@ -8,7 +8,7 @@
 
 #import "ProfileViewController.h"
 
-@interface ProfileViewController ()
+@interface ProfileViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
 @property NSArray *userArray;
 @property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
@@ -26,5 +26,16 @@
 
 }
 
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+{
+    return self.userArray.count;
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"profileCellID" forIndexPath:indexPath];
+
+    return cell;
+}
 
 @end

@@ -10,6 +10,11 @@
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *profileNameLabel;
+@property NSArray *userArray;
+@property (weak, nonatomic) IBOutlet UIImageView *profilePictureImageView;
+@property (weak, nonatomic) IBOutlet UILabel *postNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followersNumberLabel;
+@property (weak, nonatomic) IBOutlet UILabel *followingNumberLabel;
 
 @end
 
@@ -19,8 +24,6 @@
 {
     [super viewDidLoad];
 
-    PFObject *user = [PFObject objectWithClassName:@"User"];
-    self.profileNameLabel.text = user[@"name"];
 }
 
 

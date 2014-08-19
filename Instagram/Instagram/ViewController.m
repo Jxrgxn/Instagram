@@ -9,6 +9,8 @@
 #import "ViewController.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @end
 
@@ -17,13 +19,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
 }
 
-- (void)didReceiveMemoryWarning
+- (IBAction)onButtonPressedSignIn:(id)sender
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    //create User with properties and save the text field input to User
+    PFObject *user = [PFObject objectWithClassName:@"User"];
+    user[@"username"] = self.usernameTextField.text;
+    user[@"password"] = self.passwordTextField.text;
+    user[@"name"] = @"Harrison Ferrone";
+
+    [user saveEventually:^(BOOL succeeded, NSError *error)
+     {
+         if (error)
+         {
+             NSLog(@"%@", [error userInfo]);
+         }
+     }];
+
+    //resign keyboard when sign in button is pressed - when navigating back to this page the UI will be reset
+    [self.passwordTextField resignFirstResponder];
 }
 
 @end

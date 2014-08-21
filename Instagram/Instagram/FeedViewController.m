@@ -7,9 +7,11 @@
 //
 
 #import "FeedViewController.h"
+#import "FeedCellTableViewCell.h"
 
-@interface FeedViewController ()<UICollectionViewDataSource, UICollectionViewDelegate>
-@property NSArray *userArray;
+@interface FeedViewController ()<UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property NSMutableArray *allImagesArray;
 
 @end
 
@@ -18,18 +20,43 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.allImagesArray = [NSMutableArray new];
+    [self downloadAllImages];
 }
 
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
+-(void)downloadAllImages
 {
-    return self.userArray.count;
+    PFQuery *allImageQuery = [PFQuery queryWithClassName:@"userPhoto"];
+    [allImageQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+
+        for (PFObject *object in objects) {
+            PFFile *file = [object objectForKey:@"imageFile"];
+            [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                UIImage *image = [UIImage imageWithData:data];
+                [self.allImagesArray addObject:image];
+                [self.myTableView reloadData];
+                NSLog(@"%lu", (unsigned long)self.allImagesArray.count);
+            }];
+        }
+    }];
 }
 
--(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"feedCellID" forIndexPath:indexPath];
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
+    return self.allImagesArray.count;
+
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    FeedCellTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"myCellID" forIndexPath:indexPath];
+
+    cell.imageView.image = [self.allImagesArray objectAtIndex:indexPath.row];
+    
     return cell;
 }
+
+
+
 
 @end

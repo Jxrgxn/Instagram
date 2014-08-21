@@ -23,7 +23,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self downloadImages];
+}
 
+-(void)downloadImages
+{
+    PFQuery *query = [PFQuery queryWithClassName:@"userPhoto"];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        NSLog(@"COUNT %lu",(unsigned long)objects.count);
+        PFObject *object = objects.firstObject;
+        PFFile *file = [object objectForKey:@"imageFile"];
+        [file getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+            UIImage *image = [UIImage imageWithData:data];
+            self.profilePictureImageView.image = image;
+        }];
+    }];
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section

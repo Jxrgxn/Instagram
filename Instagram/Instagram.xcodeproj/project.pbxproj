@@ -21,6 +21,7 @@
 		255D80CD19A2B6CB00F35D90 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 255D80AF19A2B6CA00F35D90 /* UIKit.framework */; };
 		255D80D519A2B6CC00F35D90 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 255D80D319A2B6CC00F35D90 /* InfoPlist.strings */; };
 		255D80D719A2B6CC00F35D90 /* InstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 255D80D619A2B6CC00F35D90 /* InstagramTests.m */; };
+		2569D1B819A53AC10045DC87 /* FeedCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2569D1B719A53AC10045DC87 /* FeedCellTableViewCell.m */; };
 		36C8BBD119A3AE1E008309E4 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C8BBD019A3AE1E008309E4 /* Parse.framework */; };
 		36C8BBD319A3AE2E008309E4 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C8BBD219A3AE2E008309E4 /* Accounts.framework */; };
 		36C8BBD519A3AE33008309E4 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36C8BBD419A3AE33008309E4 /* AdSupport.framework */; };
@@ -70,6 +71,8 @@
 		255D80D219A2B6CC00F35D90 /* InstagramTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "InstagramTests-Info.plist"; sourceTree = "<group>"; };
 		255D80D419A2B6CC00F35D90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		255D80D619A2B6CC00F35D90 /* InstagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstagramTests.m; sourceTree = "<group>"; };
+		2569D1B619A53AC10045DC87 /* FeedCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedCellTableViewCell.h; sourceTree = "<group>"; };
+		2569D1B719A53AC10045DC87 /* FeedCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedCellTableViewCell.m; sourceTree = "<group>"; };
 		36C8BBD019A3AE1E008309E4 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		36C8BBD219A3AE2E008309E4 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
 		36C8BBD419A3AE33008309E4 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -174,11 +177,11 @@
 		255D80B119A2B6CA00F35D90 /* Instagram */ = {
 			isa = PBXGroup;
 			children = (
-				255D80BA19A2B6CA00F35D90 /* AppDelegate.h */,
-				255D80BB19A2B6CA00F35D90 /* AppDelegate.m */,
 				255D80BD19A2B6CB00F35D90 /* Main.storyboard */,
 				36C8BBE819A3AFDC008309E4 /* FeedViewController.h */,
 				36C8BBE919A3AFDC008309E4 /* FeedViewController.m */,
+				2569D1B619A53AC10045DC87 /* FeedCellTableViewCell.h */,
+				2569D1B719A53AC10045DC87 /* FeedCellTableViewCell.m */,
 				36C8BBEB19A3AFE5008309E4 /* ExploreViewController.h */,
 				36C8BBEC19A3AFE5008309E4 /* ExploreViewController.m */,
 				36C8BBEE19A3AFF3008309E4 /* TakePhotoViewController.h */,
@@ -198,6 +201,8 @@
 		255D80B219A2B6CA00F35D90 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				255D80BA19A2B6CA00F35D90 /* AppDelegate.h */,
+				255D80BB19A2B6CA00F35D90 /* AppDelegate.m */,
 				36C8BBD019A3AE1E008309E4 /* Parse.framework */,
 				255D80B319A2B6CA00F35D90 /* Instagram-Info.plist */,
 				255D80B419A2B6CA00F35D90 /* InfoPlist.strings */,
@@ -330,6 +335,7 @@
 				36C8BBEA19A3AFDC008309E4 /* FeedViewController.m in Sources */,
 				36C8BBF019A3AFF3008309E4 /* TakePhotoViewController.m in Sources */,
 				255D80B819A2B6CA00F35D90 /* main.m in Sources */,
+				2569D1B819A53AC10045DC87 /* FeedCellTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
